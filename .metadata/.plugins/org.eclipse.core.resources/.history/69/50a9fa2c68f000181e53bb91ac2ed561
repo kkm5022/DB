@@ -1,0 +1,79 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Scanner;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+public class ss {
+	public static void main(String args[]) throws IOException {
+		
+		File file = new File("C:/Users/woals/Desktop/out.txt");
+		FileWriter fw = new FileWriter(file);
+		BufferedReader br = new BufferedReader(new FileReader(file));
+
+		Scanner scan = new Scanner(file);
+		
+		String url = "jdbc:sqlserver://210.115.229.77:2433;";
+		String query = "Select * from Titanic"; // 쿼리문
+		// 생존자수
+		double count = 0;
+		String line = "";
+
+		Connection con = null;
+		Statement stmt = null;
+
+		try {
+			con = DriverManager.getConnection(url, "20145170", "s145170@hallym"); // 연결
+			stmt = con.createStatement(); // 연결 객체로 statement 객체 할당
+			ResultSet rs = stmt.executeQuery(query); // 쿼리문 실행
+
+			while (rs.next()) { // 출력
+				String passenger = rs.getString(1);
+				String survived = rs.getString(2);
+				String pclass = rs.getString(3);
+				String name = rs.getString(4);
+				String sex = rs.getString(5); 
+				String age = rs.getString(6);
+				String sibsp = rs.getString(7);
+				String parch = rs.getString(8);
+				String ticket = rs.getString(9);
+				String fare = rs.getString(10);
+				String cabin = rs.getString(11);
+				String embarked = rs.getString(12);
+
+				String buf;
+
+				if (survived.equals("0")) {
+					if (!age.equals("null")) {
+						if (Double.parseDouble(age) <= 20) {
+							count += 1;
+							buf = "id : " + passenger + " survived : " + survived + " pclass : " + pclass + " name : " + name + " sex : "
+									+ sex + " age : " + age + " sibsp : " + sibsp + " parch : " + parch + " ticket : " + ticket
+									+ " fare : " + fare + " cabin : " + cabin + " embarked : " + embarked;
+							
+							fw.write(buf + "\r\n"); //파일에 작성
+						}
+					}
+				}
+			}
+
+			br.close();
+			fw.close();
+			rs.close(); // 연결 닫기
+			stmt.close();
+			con.close();
+			
+			
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		while (scan.hasNextLine()) { //파일을 읽고 출력
+            System.out.println(scan.nextLine());
+        }
+	}
+}
