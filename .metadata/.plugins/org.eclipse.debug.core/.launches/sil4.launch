@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.javaApplet">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/applet2/src/applet2/sil2.java"/>
+<listEntry value="/applet2/src/applet2/sil4.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
@@ -9,6 +9,6 @@
 <intAttribute key="org.eclipse.jdt.launching.APPLET_HEIGHT" value="200"/>
 <stringAttribute key="org.eclipse.jdt.launching.APPLET_NAME" value=""/>
 <intAttribute key="org.eclipse.jdt.launching.APPLET_WIDTH" value="200"/>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="applet2.sil2"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="applet2.sil4"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="applet2"/>
 </launchConfiguration>
